@@ -6,3 +6,6 @@ Hardware list :
 - Cytron Maker Uno
 - MLX IR Temp Sensor
 - 1602 LCD Display
+
+Reading reference:
+https://create.arduino.cc/projecthub/SurtrTech/contactless-temperature-sensor-mlx90614-1e7bc7
