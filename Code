@@ -6,6 +6,9 @@ Hardware list :
 Cytron Maker Uno
 MLX IR Temp Sensor
 1602 LCD Display
+
+By : Asep Nurul Haq - ROBOTIK SIKL
+
  ****************************************************/
 
 #include <Wire.h>
@@ -16,35 +19,58 @@ Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 
 LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 
+int pinRadar = 3; // Radar is connected to pin 3
+
 void setup() {
 
-// Initialize serial communication
+  // Initialize serial communication
   Serial.begin(9600);
 
-// Initialize the temperature sensor
+  // Initialize the temperature sensor
   Serial.println("Adafruit MLX90614 test");  
   mlx.begin();  
 
-// Initialize the LCD
+  // Initialize the LCD
   lcd.init();                      
-  lcd.backlight();
+  lcd.backlight(); // turn on backlight
   lcd.setCursor(2,0);
   lcd.print("Robotik SIKL");
   lcd.setCursor(1,1);
   lcd.print("IR Thermometer");
+  delay (3000);
+  lcd.noBacklight(); // turn off backlight
+
+  // Make the pushbutton's pin an input:
+  pinMode(pinRadar, INPUT);
+  
 }
+
 
 void loop() {
 
- lcd.setCursor(0,0);
- lcd.print("Ambient ");
- lcd.print(mlx.readAmbientTempC());
- lcd.print(" C");
- 
- lcd.setCursor(0,1);
- lcd.print("Target  ");
- lcd.print(mlx.readObjectTempC());
- lcd.print(" C");
+  // Read the radar sensor input
+  int radarDetect = digitalRead(pinRadar);
 
- delay(1000);
+  // If radar detects movement, turn on the LED & display temperature value. If not, turn off LED & clear LCD.
+  if (radarDetect) {
+    lcd.backlight(); // turn on backlight
+    
+    lcd.setCursor(0,0);
+    lcd.print("Ambient ");
+    lcd.print(mlx.readAmbientTempC());
+    lcd.print(" C");
+ 
+    lcd.setCursor(0,1);
+    lcd.print("Target  ");
+    lcd.print(mlx.readObjectTempC());
+    lcd.print(" C");
+
+    delay(1000);
+  
+  } else {  
+    lcd.noBacklight(); // turn off backlight
+    lcd.clear();  // clear the LCD
+  }
+
+
 }
