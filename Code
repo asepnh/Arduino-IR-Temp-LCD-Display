@@ -57,20 +57,18 @@ void loop() {
     lcd.backlight();      // turn on backlight
     
     lcd.setCursor(0,0);
-    lcd.print("Suhu udara ");
+    lcd.print("Ambient ");
     lcd.print(mlx.readAmbientTempC());
     lcd.print(" C");
  
     lcd.setCursor(0,1);
-    lcd.print("Suhu tubuh  ");
+    lcd.print("Target  ");
     lcd.print(mlx.readObjectTempC());
     lcd.print(" C");
     
     delay(1000);
     
-    lcd.scrollDisplayLeft();
-    delay(500);
-  
+ 
   } else {  
     lcd.noBacklight();    // turn off backlight
     lcd.clear();          // clear the LCD
