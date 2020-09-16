@@ -8,4 +8,5 @@ Hardware list :
 - 1602 LCD Display https://my.cytron.io/p-i2c-1602-serial-lcd-for-arduino-and-rpi
 
 Reading reference:
-https://create.arduino.cc/projecthub/SurtrTech/contactless-temperature-sensor-mlx90614-1e7bc7
+- Temperature Sensor https://create.arduino.cc/projecthub/SurtrTech/contactless-temperature-sensor-mlx90614-1e7bc7
+- LCD https://www.makerguides.com/character-i2c-lcd-arduino-tutorial/
