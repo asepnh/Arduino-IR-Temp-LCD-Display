@@ -1,0 +1,44 @@
+/*************************************************** 
+
+ ****************************************************/
+
+#include <Wire.h>
+#include <Adafruit_MLX90614.h>
+#include <LiquidCrystal_I2C.h>
+
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+
+LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
+
+void setup() {
+
+// Initialize serial communication
+  Serial.begin(9600);
+
+// Initialize the temperature sensor
+  Serial.println("Adafruit MLX90614 test");  
+  mlx.begin();  
+
+// Initialize the LCD
+  lcd.init();                      
+  lcd.backlight();
+  lcd.setCursor(2,0);
+  lcd.print("Robotik SIKL");
+  lcd.setCursor(1,1);
+  lcd.print("IR Thermometer");
+}
+
+void loop() {
+
+ lcd.setCursor(0,0);
+ lcd.print("Ambient ");
+ lcd.print(mlx.readAmbientTempC());
+ lcd.print(" C");
+ 
+ lcd.setCursor(0,1);
+ lcd.print("Target  ");
+ lcd.print(mlx.readObjectTempC());
+ lcd.print(" C");
+
+ delay(1000);
+}
