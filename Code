@@ -19,7 +19,7 @@ Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 
 LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 
-int pinRadar = 3; // Radar is connected to pin 3
+int pinRadar = 3;         // radar is connected to pin 3
 
 void setup() {
 
@@ -32,14 +32,15 @@ void setup() {
 
   // Initialize the LCD
   lcd.init();                      
-  lcd.backlight(); // turn on backlight
+  lcd.backlight();        // turn on backlight
   lcd.setCursor(2,0);
   lcd.print("Robotik SIKL");
   lcd.setCursor(1,1);
   lcd.print("IR Thermometer");
   delay (3000);
-  lcd.noBacklight(); // turn off backlight
+  lcd.noBacklight();      // turn off backlight
 
+  
   // Make the pushbutton's pin an input:
   pinMode(pinRadar, INPUT);
   
@@ -53,23 +54,26 @@ void loop() {
 
   // If radar detects movement, turn on the LED & display temperature value. If not, turn off LED & clear LCD.
   if (radarDetect) {
-    lcd.backlight(); // turn on backlight
+    lcd.backlight();      // turn on backlight
     
     lcd.setCursor(0,0);
-    lcd.print("Ambient ");
+    lcd.print("Suhu udara ");
     lcd.print(mlx.readAmbientTempC());
     lcd.print(" C");
  
     lcd.setCursor(0,1);
-    lcd.print("Target  ");
+    lcd.print("Suhu tubuh  ");
     lcd.print(mlx.readObjectTempC());
     lcd.print(" C");
-
+    
     delay(1000);
+    
+    lcd.scrollDisplayLeft();
+    delay(500);
   
   } else {  
-    lcd.noBacklight(); // turn off backlight
-    lcd.clear();  // clear the LCD
+    lcd.noBacklight();    // turn off backlight
+    lcd.clear();          // clear the LCD
   }
 
 
