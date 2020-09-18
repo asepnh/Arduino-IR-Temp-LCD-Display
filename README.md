@@ -9,6 +9,7 @@ Hardware list :
 - MLX IR Temp Sensor https://my.cytron.io/p-mlx90614-non-contact-infrared-temperature-sensor
 - 1602 LCD Display https://my.cytron.io/p-i2c-1602-serial-lcd-for-arduino-and-rpi
 - Digital IR Distance Sensor https://my.cytron.io/p-infrared-sensor-module?search=ir%20digital%20sensor&description=1
+- Microwave Radar https://my.cytron.io/p-microwave-radar-human-motion-sensor?search=radar&description=1
 
 Reading reference:
 - Temperature Sensor https://create.arduino.cc/projecthub/SurtrTech/contactless-temperature-sensor-mlx90614-1e7bc7
