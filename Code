@@ -4,12 +4,10 @@ Project to display temperature from an IR temperature sensor on a 16x2 LCD displ
 Hardware list :
 
 Cytron Maker Uno
-MLX IR Temp Sensor - Connected to SCL SDA
-1602 LCD Display - Connected to SCL SDA
-Microwave Radar - Connected to pin 3
-IR Digital Sensor - Connected to pin 4
+MLX IR Temp Sensor
+1602 LCD Display
 
-By : ROBOTIK SIKL
+By : Asep Nurul Haq - ROBOTIK SIKL
 
  ****************************************************/
 
@@ -62,18 +60,30 @@ void loop() {
     lcd.backlight();      // turn on backlight
     
     if (IRdistance == LOW) {
-    
-      lcd.setCursor(0,0);
-      lcd.print("Ambient ");
-      lcd.print(mlx.readAmbientTempC());
-      lcd.print(" C");
- 
-      lcd.setCursor(0,1);
-      lcd.print("Target  ");
+      
+      lcd.setCursor(0,0);      
+      lcd.print("Sedang Mengukur");
+      lcd.setCursor(0,1);      
+      lcd.print("Suhu Tubuh Anda");
+      delay(3000);
+      lcd.clear();          // clear the LCD
+            
+//      lcd.setCursor(0,0);
+//      lcd.print("Ambient ");
+//      lcd.print(mlx.readAmbientTempC());
+//      lcd.print(" C");
+
+      lcd.setCursor(0,0);      
+      lcd.print("Suhu Tubuh Anda");
+//      lcd.setCursor(0,1);
+//      lcd.print("Target  ");
+
+      lcd.setCursor(4,1);   
       lcd.print(mlx.readObjectTempC());
       lcd.print(" C");
     
       delay(5000);
+      
       lcd.clear();          // clear the LCD
       
     } else {
