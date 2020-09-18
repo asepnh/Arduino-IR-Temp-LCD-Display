@@ -20,6 +20,7 @@ Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 
 int pinRadar = 3;         // radar is connected to pin 3
+int pinIRdistance = 4;     // IR distance is connected to pin 4
 
 void setup() {
 
@@ -39,10 +40,11 @@ void setup() {
   lcd.print("IR Thermometer");
   delay (3000);
   lcd.noBacklight();      // turn off backlight
-
+  lcd.clear();          // clear the LCD
   
   // Make the radar pin an input:
   pinMode(pinRadar, INPUT);
+  pinMode(pinIRdistance, INPUT);
   
 }
 
@@ -51,27 +53,39 @@ void loop() {
 
   // Read the radar sensor input
   int radarDetect = digitalRead(pinRadar);
+  int IRdistance = digitalRead(pinIRdistance);
 
   // If radar detects movement, turn on the LED & display temperature value. If not, turn off LED & clear LCD.
   if (radarDetect) {
     lcd.backlight();      // turn on backlight
     
-    lcd.setCursor(0,0);
-    lcd.print("Ambient ");
-    lcd.print(mlx.readAmbientTempC());
-    lcd.print(" C");
+    if (IRdistance == LOW) {
+    
+      lcd.setCursor(0,0);
+      lcd.print("Ambient ");
+      lcd.print(mlx.readAmbientTempC());
+      lcd.print(" C");
  
-    lcd.setCursor(0,1);
-    lcd.print("Target  ");
-    lcd.print(mlx.readObjectTempC());
-    lcd.print(" C");
+      lcd.setCursor(0,1);
+      lcd.print("Target  ");
+      lcd.print(mlx.readObjectTempC());
+      lcd.print(" C");
     
-    delay(1000);
-    
+      delay(5000);
+      lcd.clear();          // clear the LCD
+      
+    } else {
+      
+      lcd.setCursor(0,0);      
+      lcd.print("Silahkan Ukur");
+      lcd.setCursor(0,1);      
+      lcd.print("Suhu Tubuh Anda");
+      
+    }
  
   } else {  
     lcd.noBacklight();    // turn off backlight
-    lcd.clear();          // clear the LCD
+
   }
 
 
