@@ -41,7 +41,7 @@ void setup() {
   lcd.noBacklight();      // turn off backlight
 
   
-  // Make the pushbutton's pin an input:
+  // Make the radar pin an input:
   pinMode(pinRadar, INPUT);
   
 }
