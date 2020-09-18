@@ -68,16 +68,9 @@ void loop() {
       delay(3000);
       lcd.clear();          // clear the LCD
             
-//      lcd.setCursor(0,0);
-//      lcd.print("Ambient ");
-//      lcd.print(mlx.readAmbientTempC());
-//      lcd.print(" C");
 
       lcd.setCursor(0,0);      
       lcd.print("Suhu Tubuh Anda");
-//      lcd.setCursor(0,1);
-//      lcd.print("Target  ");
-
       lcd.setCursor(4,1);   
       lcd.print(mlx.readObjectTempC());
       lcd.print(" C");
