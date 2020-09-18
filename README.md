@@ -1,6 +1,8 @@
 # Arduino-IR-Temp-LCD-Display
 
-Project to display temperature from an IR temperature sensor on a 16x2 LCD display
+Project to display temperature from an IR temperature sensor on a 16x2 LCD display.
+Radar to turn on the sensor LED if detecting movement and turn it off if no movement.
+Digital IR distance sensor to trigger the IR temperature sensor to take temperature measurement.
 
 Hardware list :
 - Cytron Maker Uno https://my.cytron.io/p-maker-nano-simplifying-arduino-for-projects?search=maker%20nano&description=1
