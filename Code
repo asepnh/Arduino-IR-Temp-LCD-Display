@@ -4,9 +4,10 @@ Project to display temperature from an IR temperature sensor on a 16x2 LCD displ
 Hardware list :
 
 Cytron Maker Uno
-MLX IR Temp Sensor
-1602 LCD Display
-IR Digital Sensor
+MLX IR Temp Sensor - Connected to SCL SDA
+1602 LCD Display - Connected to SCL SDA
+Microwave Radar - Connected to pin 3
+IR Digital Sensor - Connected to pin 4
 
 By : ROBOTIK SIKL
 
