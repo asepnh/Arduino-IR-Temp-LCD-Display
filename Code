@@ -42,7 +42,7 @@ void setup() {
   lcd.noBacklight();      // turn off backlight
   lcd.clear();          // clear the LCD
   
-  // Make the radar pin an input:
+  // Make the pins an input:
   pinMode(pinRadar, INPUT);
   pinMode(pinIRdistance, INPUT);
   
